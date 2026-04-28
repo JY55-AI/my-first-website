@@ -1,1 +1,116 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>霓虹酒桌游戏</title>
+    <style>
+        /* 全局设置：黑色背景，居中对齐 */
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace; /* 复古终端字体 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 游戏主容器：带有霓虹边框 */
+        .game-container {
+            text-align: center;
+            padding: 40px;
+            border: 2px solid #0ff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #0ff, inset 0 0 20px #0ff; /* 内外发光 */
+            background: rgba(0, 20, 20, 0.8);
+            max-width: 90%;
+        }
+
+        /* 标题样式：粉色霓虹 */
+        h1 {
+            color: #f0f;
+            text-shadow: 0 0 10px #f0f, 0 0 20px #f0f;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            animation: flicker 1.5s infinite alternate; /* 闪烁动画 */
+        }
+
+        /* 结果展示区域 */
+        #result {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            min-height: 60px;
+            color: #fff;
+        }
+
+        .highlight {
+            color: #ff0; /* 关键文字黄色高亮 */
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff0;
+        }
+
+        /* 按钮样式：青色霓虹 */
+        button {
+            background: transparent;
+            color: #0ff;
+            border: 2px solid #0ff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 0 10px #0ff;
+        }
+
+        /* 按钮悬停效果 */
+        button:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 30px #0ff;
+        }
+
+        /* 闪烁动画定义 */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>⚡ 霓虹酒局 ⚡</h1>
+        <div id="result">准备好了吗？</div>
+        <button onclick="playGame()">开始游戏</button>
+    </div>
+
+    <script>
+        function playGame() {
+            const resultDiv = document.getElementById('result');
+            const tasks = [
+                "喝一口 🍺",
+                "干杯 🍻",
+                "指定一人喝 🍷",
+                "真心话 ❤️",
+                "大冒险 🔥",
+                "所有人陪喝 🥂",
+                "免死金牌 (跳过) 🛡️"
+            ];
+
+            // 简单的随机逻辑
+            const randomTask = tasks[Math.floor(Math.random() * tasks.length)];
+            
+            // 更新文字
+            resultDiv.innerHTML = `结果：<span class="highlight">${randomTask}</span>`;
+            
+            // 播放一个简单的点击音效（可选，浏览器可能需要交互才能播放）
+            // 这里仅做视觉反馈
+        }
+    </script>
+
+</body>
+</html>
